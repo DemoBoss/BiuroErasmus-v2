@@ -61,18 +61,45 @@
         </div>
 
         <div class="links">
-            <a href="{{ url('/import_excel') }}">ImportExcel</a>
-            <a href="{{ url('/siatki') }}">Siatki</a>
-            <a href="{{ url('/kierunki') }}">Kierunki</a>
-            <a href="{{ url('/wybor') }}">Wybór przedmiotów</a>
-            <a href="{{ url('/studenci') }}">Studenci</a>
-            <a href="{{ url('/prowadzacy') }}">Prowadzący</a>
+            <a style="font-size: 30px" href="{{ url('/kierunki') }}">Kierunki</a>
+            <a style="font-size: 30px" href="{{ url('/wybor') }}">Wybór przedmiotów</a>
+            <a style="font-size: 30px" href="{{ url('/prowadzacy') }}">Prowadzący</a>
         </div>
-        <div>
+        <div class="container" style="padding-top: 20px; ">
+            <div class="row row-cols-2">
+                <div class="col" >
+            <div class="card text-white bg-primary mb-3">
 
-            Jeśli chcesz dodać lub zobaczyć siatki kliknij w zakładkę "Kierunki" <br>
-            Jeśli chcesz dodać lub zobaczyć przedmioty wybrane na Erasmusa klijnij w zakładkę "Wybór Przedmiotów"
+                <div class="card-body">
+                    <h5 class="card-text">Jeśli chcesz dodać lub zobaczyć siatki kliknij w zakładkę "Kierunki"</h5>
+                </div>
+            </div>
+                </div>
 
+                <div class="col">
+                 <div class="card text-white bg-primary mb-3">
+
+                <div class="card-body">
+                    <h5 class="card-text">Jeśli chcesz dodać lub zobaczyć przedmioty wybrane na Erasmusa klijnij w zakładkę "Wybór Przedmiotów"</h5>
+                </div>
+                 </div>
+             </div>
+
+            </div>
+            <div class="row row-cols-2">
+                <div class="col" >
+                    <div class="card text-white bg-primary mb-3">
+
+                        <div class="card-body">
+                            <h5 class="card-text">Jeśli chcesz sprawdzić dane prowadzącego lub dodać go kliknij w zakładkę "Prowadzący"</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               {{--<div>--}}
+            {{--Jeśli chcesz dodać lub zobaczyć siatki kliknij w zakładkę "Kierunki" <br>--}}
+            {{--Jeśli chcesz dodać lub zobaczyć przedmioty wybrane na Erasmusa klijnij w zakładkę "Wybór Przedmiotów"--}}
+                {{--</div>--}}
         </div>
     </div>
 @endsection

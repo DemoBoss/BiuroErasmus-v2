@@ -17,11 +17,12 @@ class CreateSelectedItemsTable extends Migration
             $table->Bigincrements('id');
             $table->string('Przedmioty');
             $table->string('Forma_zaliczenia');
-            $table->string('Wykład');
-            $table->string('Cw_Konw_Lab');
+            $table->string('Wykład')->nullable();
+            $table->string('Cw_Konw_Lab')->nullable();
             $table->string('ECTS')->nullable();
-            $table->string('Na_rok')->nullable();
-            $table->string('Opis')->nullable();
+            $table->string('Na_rok');
+            $table->string('Siatka_z_roku');
+            $table->string('Opis');
 
             $table->timestamps();
         });

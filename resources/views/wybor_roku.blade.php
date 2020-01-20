@@ -1,13 +1,20 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
+    <div class="container" >
         @if(session('komunikat'))
             <div class="alert alert-success">
                 {{session('komunikat')}}
             </div>
         @endif
+            <div  style="padding-right: 20px">
+                <a href="/">
+                    <button type="button" class="btn btn-primary" data-toggle="modal">
+                        Wróć do okna głównego
+                    </button>
+                </a>
+            </div>
             <h2 style="text-align: center">Wybierz rok studiów, na które chcesz dodać przedmioty:</h2>
-            <div style="text-align: center">
+            <div style="text-align: center; font-size: 20px">
         @foreach($years as $year)
             <a id="linki" href="/wybor/{{$specialization_id}}/{{$year->id}}">
                 <div>

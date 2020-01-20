@@ -6,12 +6,29 @@
             {{session('komunikat')}}
         </div>
     @endif
+        <div>
+        <div class="float-left" style="padding-right: 20px">
+            <a href="/">
+                <button type="button" class="btn btn-primary" data-toggle="modal">
+                    Wróć do okna głównego
+                </button>
+            </a>
+        </div>
+        <div>
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalComment">
         Dodaj prowadzacego
     </button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moderator">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#moderator">
             Zarządzaj
-        </button>
+    </button>
+
+
+        </div>
+
+        </div>
+
+        <h3 style="text-align: center; padding: 20px">Wybierz prowadzącego w celu sprawdzenia danych kontaktowych:</h3>
+        <div style="text-align: center; font-size: 20px;">
     @foreach($teachers as $teacher)
         <a id="linki" href="/prowadzacy/{{$teacher->id}}">
             <div>
@@ -22,7 +39,7 @@
         </a>
 
     @endforeach
-
+        </div>
     {{--Modal do tworzenia komentarza--}}
     <div class="modal fade" id="myModalComment">
         <div class="modal-dialog modal-lg">
@@ -47,6 +64,13 @@
                             <input type="text" class="form-control" name="email" required>
                         </div>
 
+                        <label>Wprowadź numer telefonu prowadzącego:</label>
+                        <div class="form-group row justify-content-center">
+                            <input type="text" class="form-control" name="phone" required>
+                        </div>
+
+
+                        <label>Język:</label>
                         <div class="form-group row justify-content-center">
 
                             <input type="text" class="form-control" name="language" required>

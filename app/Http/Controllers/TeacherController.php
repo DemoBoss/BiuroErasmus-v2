@@ -49,13 +49,15 @@ class TeacherController extends Controller
 
         $name = $request->input('name');
         $email = $request->input('email');
+        $phone = $request->input('phone');
         $language = $request->input('language');
 
 
 
-        Teacher::create([
+        Teacher::insert([
             'name' => $name,
             'email' => $email,
+            'phone' => $phone,
             'language' => $language,
 
         ]);
@@ -72,40 +74,5 @@ class TeacherController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    function import2(Request $request)
-    {
-        $this->validate($request, [
-            'select_file'  => 'required|mimes:xls,xlsx'
-        ]);
 
-        $path = $request->file('select_file')->getRealPath();
-
-        $data = Excel::load($path)->get();
-
-        $grid_id = $request->input('grid_id');
-
-        if($data->count() > 0)
-        {
-            foreach($data->toArray() as $key => $value)
-            {
-
-                $insert_data[] = array(
-                    'nazwa_przedmiotu'  => $value['name'],
-                    'godziny'   => $value['godziny'],
-                    'ECTS'   => $value['ects'],
-                    'nauczyciel' => $value['teacher'],
-                    'jezyk'  => $value['jezyk'],
-                    'semestr'   => $value['semestr'],
-                    'grid_id'  => $grid_id,
-                );
-
-            }
-
-            if(!empty($insert_data))
-            {
-                DB::table('Subjects')->insert($insert_data);
-            }
-        }
-        return back()->with('success', 'Excel Data Imported successfully.');
-    }
 }

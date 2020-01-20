@@ -1,15 +1,23 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
+    <div class="container"  style="font-size: 20px">
         @if(session('komunikat'))
             <div class="alert alert-success">
                 {{session('komunikat')}}
             </div>
         @endif
+            <div class="float-left" style="padding-right: 20px">
+            <a href="/kierunki">
+                <button type="button" class="btn btn-primary" data-toggle="modal">
+                    Wróć do kierunków
+                </button>
+            </a>
+        </div>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalYears">
+                Dodaj rok
+            </button>
         <h3 style="text-align: center">Wybierz rok akademicki:</h3>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalYears">
-            Dodaj rok
-        </button>
+
 <div style="text-align: center">
         @foreach($lata as $year)
             <a id="linki" href="/kierunki/{{$kierunek->id}}/{{$year->id}}">

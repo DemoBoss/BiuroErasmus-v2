@@ -21,16 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/zarzadzanie', 'zarzadzanieController@zarzadzanie');
 
-Route::get('/import_excel', 'ImportExcelController@index');
-
-Route::get('/studenci', 'StudentController@index');
-
-Route::get('/studenci/{id}', 'StudentController@showStudent');
-
-Route::get('/siatki', 'SiatkiController@index');
-
-Route::get('/siatki/{id}', 'SiatkiController@showGrid');
-
 Route::get('/prowadzacy', 'TeacherController@index');
 
 Route::get('/prowadzacy/{id}', 'TeacherController@showTeacher');

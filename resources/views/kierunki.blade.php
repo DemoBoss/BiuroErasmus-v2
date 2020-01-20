@@ -6,12 +6,19 @@
                 {{session('komunikat')}}
             </div>
         @endif
-        <h2 style="text-align: center">Wybierz kierunek studiów:</h2>
+            <div class="float-left" style="padding-right: 20px">
+                <a href="/">
+                    <button type="button" class="btn btn-primary" data-toggle="modal">
+                        Wróć do okna głównego
+                    </button>
+                </a>
+            </div>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalKierunek">
             Dodaj kierunek
         </button>
-
-            <div style="text-align: center">@foreach($specializations as $specialization)
+            <h2 style="text-align: center;">Wybierz kierunek studiów:</h2>
+            <div style="text-align: center; font-size: 20px">
+                @foreach($specializations as $specialization)
                 <a id="linki" href="/kierunki/{{$specialization->id}}">
                     <div>
 

@@ -6,9 +6,9 @@
                 {{session('komunikat')}}
             </div>
         @endif
-            <h2 style="text-align: center">Wybierz kierunek studiów:</h2>
+            <h2 style="text-align: center">Wybierz kierunek studiów na które chcesz wybrać przedmioty:</h2>
 
-       <div style="text-align: center">
+       <div style="text-align: center; font-size: 20px">
         @foreach($specializations as $specialization)
             <a id="linki" href="/wybor/{{$specialization->id}}">
                 <div>
