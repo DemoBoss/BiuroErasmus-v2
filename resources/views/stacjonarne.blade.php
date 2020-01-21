@@ -32,6 +32,8 @@
                 @endif
                 <h1>Inżynierskie</h1>
 
+
+                    @if(Auth::user()->role_name == "Admin")
                 <form method="post" enctype="multipart/form-data" action="{{ url('/importInz') }}">
                     {{ csrf_field() }}
                     <input type="hidden" name="year_id" value="{{$year_id}}">
@@ -58,7 +60,7 @@
                     </div>
 
                 </form>
-
+                    @endif
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -175,7 +177,7 @@
                 <h1>Magisterskie</h1>
 
 
-
+                @if(Auth::user()->role_name == "Admin")
                 <form method="post" enctype="multipart/form-data" action="{{ url('/importMgr') }}">
                     {{ csrf_field() }}
                     <input type="hidden" name="year_id" value="{{$year_id}}">
@@ -202,6 +204,8 @@
                         </table>
                     </div>
                 </form>
+                @endif
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Przedmioty</h3>

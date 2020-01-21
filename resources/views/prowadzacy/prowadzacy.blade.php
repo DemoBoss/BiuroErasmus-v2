@@ -6,6 +6,10 @@
             {{session('komunikat')}}
         </div>
     @endif
+
+
+
+
         <div>
         <div class="float-left" style="padding-right: 20px">
             <a href="/">
@@ -14,16 +18,19 @@
                 </button>
             </a>
         </div>
+
+            @if(Auth::user()->role_name == "User")
+                <div>
+                    <h3 style="text-align: center; padding: 20px">   Nie masz uprawnień!</h3>
+
+                </div>
+@endif
+
+            @if(Auth::user()->role_name == "Admin")
         <div>
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalComment">
         Dodaj prowadzacego
     </button>
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#moderator">
-            Zarządzaj
-    </button>
-
-
-        </div>
 
         </div>
 
@@ -40,6 +47,10 @@
 
     @endforeach
         </div>
+            @endif
+
+
+
     {{--Modal do tworzenia komentarza--}}
     <div class="modal fade" id="myModalComment">
         <div class="modal-dialog modal-lg">
@@ -175,7 +186,7 @@
         </div>
     </div>
 
-
+    </div>
     {{--sciript filtrujący tabelę userów--}}
     <script>
         $(document).ready(function(){

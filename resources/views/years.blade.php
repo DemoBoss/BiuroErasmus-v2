@@ -6,6 +6,7 @@
                 {{session('komunikat')}}
             </div>
         @endif
+        <div class="row">
             <div class="float-left" style="padding-right: 20px">
             <a href="/kierunki">
                 <button type="button" class="btn btn-primary" data-toggle="modal">
@@ -13,9 +14,14 @@
                 </button>
             </a>
         </div>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalYears">
-                Dodaj rok
-            </button>
+            @if(Auth::user()->role_name == "Admin")
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalYears">
+                    Dodaj rok
+                </button>
+
+            @endif
+        </div>
+
         <h3 style="text-align: center">Wybierz rok akademicki:</h3>
 
 <div style="text-align: center">

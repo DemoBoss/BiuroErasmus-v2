@@ -17,7 +17,7 @@ class DynamicPDFController extends Controller
     function get_customer_data()
     {
         $customer_data = DB::table('selected_items')
-            ->get();
+            ->orderBy('Na_rok', 'DESC')->get();
         return $customer_data;
       }
 //
@@ -49,7 +49,8 @@ class DynamicPDFController extends Controller
     <th style="border: 1px solid; " width="15%">Forma zaliczenia</th>
     <th style="border: 1px solid; " width="15%">Wykład</th>
     <th style="border: 1px solid; " width="10%">ECTS</th>
-    <th style="border: 1px solid; " width="15%">Na rok</th>
+    <th style="border: 1px solid; " width="10%">Na rok</th>
+    <th style="border: 1px solid; " width="10%">Z roku</th>
     <th style="border: 1px solid;" width="15%">Opis</th>
    </tr>
      ';
@@ -57,12 +58,13 @@ class DynamicPDFController extends Controller
         {
             $output .= '
       <tr>
-       <td style="border: 1px solid; padding:12px;">'.$customer->Przedmioty.'</td>
+       <td style="border: 1px solid;">'.$customer->Przedmioty.'</td>
        <td style="border: 1px solid; padding:12px;">'.$customer->Forma_zaliczenia.'</td>
        <td style="border: 1px solid; padding:12px;">'.$customer->Wykład.'</td>
        <td style="border: 1px solid; padding:12px;">'.$customer->Cw_Konw_Lab.'</td>
        <td style="border: 1px solid; padding:12px;">'.$customer->ECTS.'</td>
-        <td style="border: 1px solid; padding:12px;">'.$customer->Na_rok.'</td>
+        <td style="border: 1px solid; ">'.$customer->Na_rok.'</td>
+        <td style="border: 1px solid; ">'.$customer->Siatka_z_roku.'</td>
        <td style="border: 1px solid; padding:12px;">'.$customer->Opis.'</td>
       </tr>
       ';

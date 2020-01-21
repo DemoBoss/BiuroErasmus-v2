@@ -62,8 +62,13 @@
 
         <div class="links">
             <a style="font-size: 30px" href="{{ url('/kierunki') }}">Kierunki</a>
-            <a style="font-size: 30px" href="{{ url('/wybor') }}">Wybór przedmiotów</a>
-            <a style="font-size: 30px" href="{{ url('/prowadzacy') }}">Prowadzący</a>
+            @if(Auth::check())
+                <a style="font-size: 30px" href="{{ url('/wybor') }}">Wybór przedmiotów</a>
+                <a style="font-size: 30px" href="{{ url('/prowadzacy') }}">Prowadzący</a>
+            @endif
+
+
+
         </div>
         <div class="container" style="padding-top: 20px; ">
             <div class="row row-cols-2">
@@ -75,7 +80,7 @@
                 </div>
             </div>
                 </div>
-
+                @if(Auth::check())
                 <div class="col">
                  <div class="card text-white bg-primary mb-3">
 
@@ -84,6 +89,7 @@
                 </div>
                  </div>
              </div>
+
 
             </div>
             <div class="row row-cols-2">
@@ -96,10 +102,9 @@
                     </div>
                 </div>
             </div>
-               {{--<div>--}}
-            {{--Jeśli chcesz dodać lub zobaczyć siatki kliknij w zakładkę "Kierunki" <br>--}}
-            {{--Jeśli chcesz dodać lub zobaczyć przedmioty wybrane na Erasmusa klijnij w zakładkę "Wybór Przedmiotów"--}}
-                {{--</div>--}}
+            @endif
+
         </div>
+        <div><a style="font-size: 30px" href="{{ url('/dynamic_pdf') }}">PDF z wybranymi przedmiotami</a></div>
     </div>
 @endsection

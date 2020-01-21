@@ -67,4 +67,9 @@ Route::get('/dynamic_pdf', 'DynamicPDFController@index');
 
 Route::get('/dynamic_pdf/pdf', 'DynamicPDFController@pdf');
 
+Route::get('/zarzadzanie' , 'zarzadzanieController@go_to_zarzadzanie');
+
+Route::get('/nowy_admin', 'zarzadzanieController@dodaj_admina');
+
+Route::get('/usun_admina', 'zarzadzanieController@usun_admina');
 

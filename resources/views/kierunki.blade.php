@@ -6,6 +6,8 @@
                 {{session('komunikat')}}
             </div>
         @endif
+        <div class="row">
+
             <div class="float-left" style="padding-right: 20px">
                 <a href="/">
                     <button type="button" class="btn btn-primary" data-toggle="modal">
@@ -13,9 +15,15 @@
                     </button>
                 </a>
             </div>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalKierunek">
-            Dodaj kierunek
-        </button>
+            @if(Auth::user()->role_name == "Admin")
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalKierunek">
+                    Dodaj kierunek
+                </button>
+
+            @endif
+
+        </div>
+
             <h2 style="text-align: center;">Wybierz kierunek studiów:</h2>
             <div style="text-align: center; font-size: 20px">
                 @foreach($specializations as $specialization)
