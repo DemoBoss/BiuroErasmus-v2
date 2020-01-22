@@ -182,7 +182,7 @@ class SiatkiController extends Controller
 
             if(!empty($insert_data))
             {
-                DB::table('Subjects')->insert($insert_data);
+                DB::table('subjects')->insert($insert_data);
 
             }
         }
@@ -286,7 +286,7 @@ class SiatkiController extends Controller
 
             if(!empty($insert_data))
             {
-                DB::table('Subjects')->insert($insert_data);
+                DB::table('subjects')->insert($insert_data);
 
             }
         }
