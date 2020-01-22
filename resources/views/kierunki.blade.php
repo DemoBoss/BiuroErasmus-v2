@@ -6,8 +6,9 @@
                 {{session('komunikat')}}
             </div>
         @endif
-        <div class="row">
 
+        @guest
+        <div class="row">
             <div class="float-left" style="padding-right: 20px">
                 <a href="/">
                     <button type="button" class="btn btn-primary" data-toggle="modal">
@@ -15,12 +16,22 @@
                     </button>
                 </a>
             </div>
-            @if(Auth::user()->role_name == "Admin")
+
+
+
+          @else
+                <div class="float-left" style="padding-right: 20px">
+                    <a href="/">
+                        <button type="button" class="btn btn-primary" data-toggle="modal">
+                            Wróć do okna głównego
+                        </button>
+                    </a>
+                </div>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalKierunek">
                     Dodaj kierunek
                 </button>
+            @endguest
 
-            @endif
 
         </div>
 
