@@ -59,10 +59,10 @@ class DynamicPDFController extends Controller
             $output .= '
       <tr>
        <td style="border: 1px solid;">'.$customer->Przedmioty.'</td>
-       <td style="border: 1px solid; padding:12px;">'.$customer->Forma_zaliczenia.'</td>
-       <td style="border: 1px solid; padding:12px;">'.$customer->Wykład.'</td>
-       <td style="border: 1px solid; padding:12px;">'.$customer->Cw_Konw_Lab.'</td>
-       <td style="border: 1px solid; padding:12px;">'.$customer->ECTS.'</td>
+       <td style="border: 1px solid;">'.$customer->Forma_zaliczenia.'</td>
+       <td style="border: 1px solid;">'.$customer->Wykład.'</td>
+       <td style="border: 1px solid;">'.$customer->Cw_Konw_Lab.'</td>
+       <td style="border: 1px solid;">'.$customer->ECTS.'</td>
         <td style="border: 1px solid; ">'.$customer->Na_rok.'</td>
         <td style="border: 1px solid; ">'.$customer->Siatka_z_roku.'</td>
        <td style="border: 1px solid; padding:12px;">'.$customer->Opis.'</td>
