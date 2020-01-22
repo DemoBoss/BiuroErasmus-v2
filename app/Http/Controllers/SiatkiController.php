@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Grid;
 use App\StudyYear;
 use App\Subject;
+use Dompdf\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exceptions\Handler;
 
 
 class SiatkiController extends Controller
@@ -339,43 +341,44 @@ class SiatkiController extends Controller
 
 
 
-        if($data->count() > 0)
+    if($data->count() > 0)
+    {
+        foreach($data->toArray() as $key => $value)
         {
-            foreach($data->toArray() as $key => $value)
+            foreach($value as $row)
             {
-                foreach($value as $row)
-                {
-                    $insert_data[] = array(
-                        'Przedmioty'  => $row['przedmiot'],
-                        'Forma_zaliczenia'   => $row['forma_zaliczenia'],
-                        'Wykład1'   => $row['wyklad1'],
-                        'Cw_Konw_Lab_1' => $row['cw_konw_lab_s1'],
-                        'ECTS_s1'  => $row['ects_s1'],
-                        'semestr_1'   => $row['semestr_1'],
-                        'Wykład2'   => $row['wyklad2'],
-                        'Cw_Konw_Lab_2' => $row['cw_konw_lab_s2'],
-                        'ECTS_s2'  => $row['ects_s2'],
-                        'semestr_2'   => $row['semestr_2'],
-                        'rok1'   => $row['rok_1'],
-                        'Wykład3'   => $row['wyklad3'],
-                        'Cw_Konw_Lab_3' => $row['cw_konw_lab_s3'],
-                        'ECTS_s3'  => $row['ects_s3'],
-                        'semestr_3'   => $row['semestr_3'],
-                        'grid_id'  => $grid->id,
-                        'Nazwa_pliku' => $nazwaPliku,
+                $insert_data[] = array(
+                    'Przedmioty'  => $row['przedmiot'],
+                    'Forma_zaliczenia'   => $row['forma_zaliczenia'],
+                    'Wykład1'   => $row['wyklad1'],
+                    'Cw_Konw_Lab_1' => $row['cw_konw_lab_s1'],
+                    'ECTS_s1'  => $row['ects_s1'],
+                    'semestr_1'   => $row['semestr_1'],
+                    'Wykład2'   => $row['wyklad2'],
+                    'Cw_Konw_Lab_2' => $row['cw_konw_lab_s2'],
+                    'ECTS_s2'  => $row['ects_s2'],
+                    'semestr_2'   => $row['semestr_2'],
+                    'rok1'   => $row['rok_1'],
+                    'Wykład3'   => $row['wyklad3'],
+                    'Cw_Konw_Lab_3' => $row['cw_konw_lab_s3'],
+                    'ECTS_s3'  => $row['ects_s3'],
+                    'semestr_3'   => $row['semestr_3'],
+                    'grid_id'  => $grid->id,
+                    'Nazwa_pliku' => $nazwaPliku,
 
-                    );
-                }
-            }
-
-
-            if(!empty($insert_data))
-            {
-                DB::table('Subjects')->insert($insert_data);
-
+                );
             }
         }
-        return back()->with('success', 'Excel Data Imported successfully.');
+
+
+        if(!empty($insert_data))
+        {
+            DB::table('Subjects')->insert($insert_data);
+
+        }
+    }
+    return back()->with('success', 'Excel Data Imported successfully.');
+
     }
 
 

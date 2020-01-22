@@ -164,9 +164,9 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalInzynier">
-                    Dodaj Przedmiot
-                </button>
+                {{--<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalInzynier">--}}
+                    {{--Dodaj Przedmiot--}}
+                {{--</button>--}}
 
             </div>
 
@@ -264,9 +264,9 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalMagister">
-                    Dodaj Przedmiot
-                </button>
+                {{--<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalMagister">--}}
+                    {{--Dodaj Przedmiot--}}
+                {{--</button>--}}
 
             </div>
 

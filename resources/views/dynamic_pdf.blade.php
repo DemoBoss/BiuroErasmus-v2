@@ -16,7 +16,7 @@
 <body>
 <br />
 <div class="container">
-    <h3 align="center">Wybrane przedmioty</h3><br />
+
     <div class="float-left" style="padding-right: 20px">
         <a href="/">
             <button type="button" class="btn btn-primary" data-toggle="modal">
@@ -26,7 +26,7 @@
     </div>
     <div class="row">
         <div class="col-md-7" align="right">
-            <h4>Customer Data</h4>
+            <h4>Wybrane przedmioty</h4>
         </div>
         <div class="col-md-5" align="right">
             <a href="{{ url('dynamic_pdf/pdf') }}" class="btn btn-danger">Konwertuj do  PDF</a>
