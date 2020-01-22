@@ -45,9 +45,9 @@ class DynamicPDFController extends Controller
      <table width="100%" style="border-collapse: collapse; border: 0px; font-family : firefly, DejaVu Sans, sans-serif ; ">
       <tr>
     <th style="border: 1px solid; " width="15%">Przedmioty</th>
-    <th style="border: 1px solid; " width="15%">Address</th>
     <th style="border: 1px solid; " width="15%">Forma zaliczenia</th>
     <th style="border: 1px solid; " width="15%">Wykład</th>
+    <th style="border: 1px solid; " width="15%">Cw/Konw/Lab</th>
     <th style="border: 1px solid; " width="10%">ECTS</th>
     <th style="border: 1px solid; " width="10%">Na rok</th>
     <th style="border: 1px solid; " width="10%">Z roku</th>
@@ -65,7 +65,7 @@ class DynamicPDFController extends Controller
        <td style="border: 1px solid;">'.$customer->ECTS.'</td>
         <td style="border: 1px solid; ">'.$customer->Na_rok.'</td>
         <td style="border: 1px solid; ">'.$customer->Siatka_z_roku.'</td>
-       <td style="border: 1px solid; padding:12px;">'.$customer->Opis.'</td>
+       <td style="border: 1px solid;">'.$customer->Opis.'</td>
       </tr>
       ';
         }
