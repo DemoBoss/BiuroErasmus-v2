@@ -24,6 +24,11 @@
                 <strong>{{ $message }}</strong>
             </div>
         @endif
+            <a id="linki" href="/kierunki/{{$kierunek_id}}/{{$year_id}}" >
+                <button type="button" class="btn btn-primary" data-toggle="modal">
+                    Wróć do toku studiów
+                </button>
+            </a>
 
 
         <div class="container">
@@ -70,6 +75,7 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <tr>
+                                <th>Usuń przedmiot</th>
                                 <th>Przedmioty</th>
                                 <th>Forma zaliczenia</th>
                                 <th>Wykład</th>
@@ -112,6 +118,12 @@
                                 @foreach($subjectsInzNS as $row)
 
                                     <tr class="rzad">
+                                        <td>
+                                            <form action="/delete_subject">
+                                                <input type="hidden" name="subject_id" value="{{$row->id}}">
+                                                <button type="submit" class=" btn btn-danger" style="margin-top: 10px">Usuń</button>
+                                            </form>
+                                        </td>
                                         <td>{{ $row->Przedmioty }}</td>
                                         <td>{{ $row->Forma_zaliczenia }}</td>
                                         <td>{{ $row->Wykład1 }}</td>
@@ -209,6 +221,7 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <tr>
+                                <th>Usuń przedmiot</th>
                                 <th>Przedmioty</th>
                                 <th>Forma zaliczenia</th>
                                 <th>Wykład</th>
@@ -232,6 +245,12 @@
                                 @foreach($subjectsMgrNS as $row)
 
                                     <tr class="rzad">
+                                        <td>
+                                            <form action="/delete_subject">
+                                                <input type="hidden" name="subject_id" value="{{$row->id}}">
+                                                <button type="submit" class=" btn btn-danger" style="margin-top: 10px">Usuń</button>
+                                            </form>
+                                        </td>
                                         <td>{{ $row->Przedmioty }}</td>
                                         <td>{{ $row->Forma_zaliczenia }}</td>
                                         <td>{{ $row->Wykład1 }}</td>

@@ -24,7 +24,11 @@
                 <strong>{{ $message }}</strong>
             </div>
         @endif
-
+            <a id="linki" href="/kierunki/{{$kierunek_id}}/{{$year_id}}" >
+                <button type="button" class="btn btn-primary" data-toggle="modal">
+                    Wróć do toku studiów
+                </button>
+            </a>
 
             <div class="container">
                 @if(!is_null($grid))
@@ -32,7 +36,9 @@
                 @endif
                 <h1>Inżynierskie</h1>
 
+@guest
 
+    @else
                     @if(Auth::user()->role_name == "Admin")
                 <form method="post" enctype="multipart/form-data" action="{{ url('/importInz') }}">
                     {{ csrf_field() }}
@@ -61,7 +67,7 @@
 
                 </form>
                     @endif
-
+@endguest
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Przedmioty</h3>
@@ -70,6 +76,7 @@
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <tr>
+                                    <th>Usuń przedmiot</th>
                                     <th>Nazwa pliku siatki</th>
                                     <th>Przedmioty</th>
                                     <th>Forma zaliczenia</th>
@@ -115,6 +122,12 @@
                                     @foreach($subjectsInz as $row)
 
                                         <tr class="rzad">
+                                            <td>
+                                                <form action="/delete_subject">
+                                                    <input type="hidden" name="subject_id" value="{{$row->id}}">
+                                                    <button type="submit" class=" btn btn-danger" style="margin-top: 10px">Usuń</button>
+                                                </form>
+                                            </td>
                                             <td>{{ $row->Nazwa_pliku }}</td>
                                             <td>{{ $row->Przedmioty }}</td>
                                             <td>{{ $row->Forma_zaliczenia }}</td>
@@ -176,7 +189,9 @@
 
                 <h1>Magisterskie</h1>
 
+                @guest
 
+                @else
                 @if(Auth::user()->role_name == "Admin")
                 <form method="post" enctype="multipart/form-data" action="{{ url('/importMgr') }}">
                     {{ csrf_field() }}
@@ -205,7 +220,7 @@
                     </div>
                 </form>
                 @endif
-
+@endguest
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Przedmioty</h3>
@@ -214,6 +229,7 @@
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <tr>
+                                    <th>Usuń przedmiot</th>
                                     <th>Przedmioty</th>
                                     <th>Forma zaliczenia</th>
                                     <th>Wykład</th>
@@ -236,6 +252,12 @@
                                     @foreach($subjectsMgr as $row)
 
                                         <tr class="rzad">
+                                            <td>
+                                                <form action="/delete_subject">
+                                                    <input type="hidden" name="subject_id" value="{{$row->id}}">
+                                                    <button type="submit" class=" btn btn-danger" style="margin-top: 10px">Usuń</button>
+                                                </form>
+                                            </td>
                                             <td>{{ $row->Przedmioty }}</td>
                                             <td>{{ $row->Forma_zaliczenia }}</td>
                                             <td>{{ $row->Wykład1 }}</td>
@@ -280,7 +302,7 @@
 
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h4 class="modal-title">Tworzenie przedmiotu</h4>
+                        <h4 class="modal-title">Tworzenie przedmiotu Inżynier stacjonarne</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 

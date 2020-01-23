@@ -2,7 +2,7 @@
 @section('content')
     <div class="container" >
 
-            <a href="/kierunki">
+        <a href="/kierunki">
                 <button type="button" class="btn btn-primary" data-toggle="modal">
                     Wróć do kierunków
                 </button>

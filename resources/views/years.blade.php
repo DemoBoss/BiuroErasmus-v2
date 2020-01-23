@@ -6,23 +6,36 @@
                 {{session('komunikat')}}
             </div>
         @endif
-        <div class="row">
-            <div class="float-left" style="padding-right: 20px">
+            <div class="row">
+        @guest
+
+            <div style="padding-right: 20px">
             <a href="/kierunki">
                 <button type="button" class="btn btn-primary" data-toggle="modal">
                     Wróć do kierunków
                 </button>
             </a>
-        </div>
+            </div>
+                @else
+
             @if(Auth::user()->role_name == "Admin")
+                <div class="float-left" style="padding-right: 20px">
+                    <a href="/kierunki">
+                        <button type="button" class="btn btn-primary" data-toggle="modal">
+                            Wróć do kierunków
+                        </button>
+                    </a>
+
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalYears">
                     Dodaj rok
                 </button>
-
+                </div>
             @endif
-        </div>
 
-        <h3 style="text-align: center">Wybierz rok akademicki:</h3>
+@endguest
+            </div>
+            <div><h3 style="text-align: center">Wybierz rok akademicki:</h3></div>
+
 
 <div style="text-align: center">
         @foreach($lata as $year)
