@@ -29,7 +29,7 @@
             <h4>Wybrane przedmioty</h4>
         </div>
         <div class="col-md-5" align="right">
-            <a href="{{ url('dynamic_pdf/pdf') }}" class="btn btn-danger">Konwertuj do  PDF</a>
+            <a href="{{ url('dynamic_pdf/pdf') }}" class="btn btn-success">Konwertuj do  PDF</a>
         </div>
     </div>
     <br />
@@ -37,6 +37,7 @@
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
+                <th>Usuń przedmiot</th>
                 <th>Przedmioty</th>
                 <th>Forma zaliczenia</th>
                 <th>Wykład</th>
@@ -48,16 +49,27 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($customer_data as $customer)
+            @foreach($customer_data as $row)
                 <tr>
-                    <td>{{ $customer->Przedmioty }}</td>
-                    <td>{{ $customer->Forma_zaliczenia }}</td>
-                    <td>{{ $customer->Wykład }}</td>
-                    <td>{{ $customer->Cw_Konw_Lab }}</td>
-                    <td>{{ $customer->ECTS }}</td>
-                    <td>{{ $customer->Na_rok }}</td>
-                    <td>{{ $customer->Siatka_z_roku }}</td>
-                    <td>{{ $customer->Opis }}</td>
+                    @guest
+                    @else
+                        @if(Auth::user()->role_name == "Admin")
+                            <td>
+                                <form action="/usun_wybrany">
+                                    <input type="hidden" name="subject_id" value="{{$row->id}}">
+                                    <button type="submit" class=" btn btn-danger" style="margin-top: 10px">Usuń</button>
+                                </form>
+                            </td>
+                        @endif
+                    @endguest
+                    <td>{{ $row->Przedmioty }}</td>
+                    <td>{{ $row->Forma_zaliczenia }}</td>
+                    <td>{{ $row->Wykład }}</td>
+                    <td>{{ $row->Cw_Konw_Lab }}</td>
+                    <td>{{ $row->ECTS }}</td>
+                    <td>{{ $row->Na_rok }}</td>
+                    <td>{{ $row->Siatka_z_roku }}</td>
+                    <td>{{ $row->Opis }}</td>
                 </tr>
             @endforeach
             </tbody>
