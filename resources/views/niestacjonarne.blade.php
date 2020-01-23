@@ -83,6 +83,7 @@
                                     @endif
                                 @endguest
 
+                                <th>Nazwa pliku siatki</th>
                                 <th>Przedmioty</th>
                                 <th>Forma zaliczenia</th>
                                 <th>Wykład</th>
@@ -136,6 +137,7 @@
                                                 </td>
                                             @endif
                                         @endguest
+                                        <td>{{ $row->Nazwa_pliku }}</td>
                                         <td>{{ $row->Przedmioty }}</td>
                                         <td>{{ $row->Forma_zaliczenia }}</td>
                                         <td>{{ $row->Wykład1 }}</td>
@@ -240,6 +242,7 @@
                                         <th>Usuń przedmiot</th>
                                     @endif
                                 @endguest
+                                <th>Nazwa pliku siatki</th>
                                 <th>Przedmioty</th>
                                 <th>Forma zaliczenia</th>
                                 <th>Wykład</th>
@@ -274,6 +277,7 @@
                                                 </td>
                                             @endif
                                         @endguest
+                                        <td>{{ $row->Nazwa_pliku }}</td>
                                         <td>{{ $row->Przedmioty }}</td>
                                         <td>{{ $row->Forma_zaliczenia }}</td>
                                         <td>{{ $row->Wykład1 }}</td>
