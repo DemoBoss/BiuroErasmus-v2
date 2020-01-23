@@ -277,7 +277,8 @@
                                                 </td>
                                             @endif
                                         @endguest
-                                        <td>{{ $row->Nazwa_pliku }}</td>
+
+                                            <td>{{ $row->Nazwa_pliku }}</td>
                                         <td>{{ $row->Przedmioty }}</td>
                                         <td>{{ $row->Forma_zaliczenia }}</td>
                                         <td>{{ $row->Wykład1 }}</td>

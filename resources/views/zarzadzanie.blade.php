@@ -4,7 +4,7 @@
 
     <div class="row justify-content-center" style="margin-bottom: 40px">
         <div class="col-lg-5 col-sm-8 kafelki" style="text-align: center;box-shadow:3px 3px 6px black;  padding-top: 20px; padding-bottom: 20px; margin-left: 4%">
-            <h3 class="label_login">Moderatorzy</h3><br><br>
+            <h3 class="label_login">Zarządzanie użytkownikami</h3><br><br>
             {{--zarządzanie moderatorami--}}
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moderator">
                 Zarządzaj
@@ -69,7 +69,7 @@
                 {{--formularz dodawanie nowego moderatora--}}
                 <div class="modal-body row">
                     <div class="col-12">
-                        <label>Nowy moderator</label>
+                        <label>Nowy admin</label>
                         <form action="nowy_admin">
                             <label>Wpisz login użytkownika: </label>
                             <input class="form-control" id="myInput" type="text" placeholder="Szukaj.."><br/>

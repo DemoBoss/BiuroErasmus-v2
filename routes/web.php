@@ -63,6 +63,8 @@ Route::get('/dodaj_przedmiot', 'WyborController@add_subject');
 
 Route::get('/delete_subject', 'SiatkiController@delete_subject');
 
+Route::get('/usun_wybrany', 'WyborController@delete_subject');
+
 Route::post('/import_excel/import', 'ImportExcelController@import');
 
 Route::get('/dynamic_pdf', 'DynamicPDFController@index');

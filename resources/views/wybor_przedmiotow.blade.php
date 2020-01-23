@@ -25,6 +25,7 @@
             <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <tr>
+                        <th>Usuń przedmiot</th>
                         <th>Przedmioty</th>
                         <th>Forma zaliczenia</th>
                         <th>Wykład</th>
@@ -39,6 +40,17 @@
                         @foreach($wybrane as $row)
 
                             <tr class="rzad">
+                                @guest
+                                @else
+                                    @if(Auth::user()->role_name == "Admin")
+                                        <td>
+                                            <form action="/usun_wybrany">
+                                                <input type="hidden" name="subject_id" value="{{$row->id}}">
+                                                <button type="submit" class=" btn btn-danger" style="margin-top: 10px">Usuń</button>
+                                            </form>
+                                        </td>
+                                    @endif
+                                @endguest
                                 <td>{{ $row->Przedmioty }}</td>
                                 <td>{{ $row->Forma_zaliczenia }}</td>
                                 <td>{{ $row->Wykład }}</td>
@@ -72,6 +84,7 @@
             <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <tr>
+                        <th>Usuń przedmiot</th>
                         <th>Przedmioty</th>
                         <th>Forma zaliczenia</th>
                         <th>Wykład</th>
@@ -87,6 +100,17 @@
                         @foreach($wybrane2 as $row)
 
                             <tr class="rzad">
+                                @guest
+                                @else
+                                    @if(Auth::user()->role_name == "Admin")
+                                        <td>
+                                            <form action="/usun_wybrany">
+                                                <input type="hidden" name="subject_id" value="{{$row->id}}">
+                                                <button type="submit" class=" btn btn-danger" style="margin-top: 10px">Usuń</button>
+                                            </form>
+                                        </td>
+                                    @endif
+                                @endguest
                                 <td>{{ $row->Przedmioty }}</td>
                                 <td>{{ $row->Forma_zaliczenia }}</td>
                                 <td>{{ $row->Wykład }}</td>

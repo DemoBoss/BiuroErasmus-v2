@@ -357,6 +357,19 @@ $g= $grid . '/'. $g2;
     }
 
 
+    public static function delete_subject(Request $request)
+    {
 
+        $id = $request->input('subject_id');
+
+
+        // dd( $id);
+        DB::table('selected_items')->where('id', '=', $id)->delete();
+        $komunikat = "Przedmiot został usunięty z wyranych przedmiotów pomyślnie.";
+
+        // Przekierowanie do /wybór przedmiotów
+        return back()->with(compact('komunikat'));
+
+    }
 
 }
