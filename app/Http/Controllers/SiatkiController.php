@@ -416,7 +416,7 @@ class SiatkiController extends Controller
     function importMgrNS(Request $request)
     {
         $this->validate($request, [
-            'select_file'  => 'required|mimes:xls,xlsx'
+            'select_file' => 'required|mimes:xls,xlsx'
         ]);
 
         $year_id = $request->input('year_id');
@@ -425,20 +425,17 @@ class SiatkiController extends Controller
         $stacjonarne = $request->input('stacjonarne');
         $nazwaPliku = $request->file('select_file')->getClientOriginalName();
 
-
         $path = $request->file('select_file')->getRealPath();
-
         $data = Excel::load($path)->get();
         $rok = StudyYear::where('id', $year_id)->first();
-
         $year = substr($rok->name, 0, 4);
 
         $existing_grid = Grid::where('nazwa_siatki', (int)$year)->
-            where('year_id', $year_id)->
-            where('stacjonarne', $stacjonarne)->
-            where('inzynierskie', $inzynierskie)->first();
+        where('year_id', $year_id)->
+        where('stacjonarne', $stacjonarne)->
+        where('inzynierskie', $inzynierskie)->first();
 
-        if(is_null($existing_grid)) {
+        if (is_null($existing_grid)) {
             Grid::create([
                 'nazwa_siatki' => (int)$year,
                 'year_id' => $year_id,
@@ -448,55 +445,44 @@ class SiatkiController extends Controller
             ]);
         }
 
-
-
-
-        $grid = Grid::where ('year_id', $year_id)
+        $grid = Grid::where('year_id', $year_id)
             ->where('specialization_id', $kierunek_id)
             ->where('stacjonarne', $stacjonarne)
             ->where('inzynierskie', $inzynierskie)->first();
 
+            if ($data->count() > 0) {
+                foreach ($data->toArray() as $key => $value) {
+                    foreach ($value as $row) {
+                        $insert_data[] = array(
+                            'Przedmioty' => $row['przedmiot'],
+                            'Forma_zaliczenia' => $row['forma_zaliczenia'],
+                            'Wykład1' => $row['wyklad1'],
+                            'Cw_Konw_Lab_1' => $row['cw_konw_lab_1'],
+                            'ECTS_s1' => $row['ects_s1'],
+                            'semestr_1' => $row['semestr_1'],
+                            'Wykład2' => $row['wyklad2'],
+                            'Cw_Konw_Lab_2' => $row['cw_konw_lab_2'],
+                            'ECTS_s2' => $row['ects_s2'],
+                            'semestr_2' => $row['semestr_2'],
+                            'rok1' => $row['rok_1'],
+                            'Wykład3' => $row['wyklad3'],
+                            'Cw_Konw_Lab_3' => $row['cw_konw_lab_3'],
+                            'ECTS_s3' => $row['ects_s3'],
+                            'semestr_3' => $row['semestr_3'],
+                            'grid_id' => $grid->id,
+                            'Nazwa_pliku' => $nazwaPliku,
 
+                        );
+                    }
+                }
+                if (!empty($insert_data)) {
+                    DB::table('Subjects')->insert($insert_data);
 
-        if($data->count() > 0)
-        {
-            foreach($data->toArray() as $key => $value)
-            {
-                foreach($value as $row)
-                {
-                    $insert_data[] = array(
-                        'Przedmioty'  => $row['przedmiot'],
-                        'Forma_zaliczenia'   => $row['forma_zaliczenia'],
-                        'Wykład1'   => $row['wyklad1'],
-                        'Cw_Konw_Lab_1' => $row['cw_konw_lab_1'],
-                        'ECTS_s1'  => $row['ects_s1'],
-                        'semestr_1'   => $row['semestr_1'],
-                        'Wykład2'   => $row['wyklad2'],
-                        'Cw_Konw_Lab_2' => $row['cw_konw_lab_2'],
-                        'ECTS_s2'  => $row['ects_s2'],
-                        'semestr_2'   => $row['semestr_2'],
-                        'rok1'   => $row['rok_1'],
-                        'Wykład3'   => $row['wyklad3'],
-                        'Cw_Konw_Lab_3' => $row['cw_konw_lab_3'],
-                        'ECTS_s3'  => $row['ects_s3'],
-                        'semestr_3'   => $row['semestr_3'],
-                        'grid_id'  => $grid->id,
-                        'Nazwa_pliku' => $nazwaPliku,
-
-                    );
                 }
             }
-
-
-            if(!empty($insert_data))
-            {
-                DB::table('Subjects')->insert($insert_data);
-
-            }
+            return back()->with('success', 'Excel Data Imported successfully.');
         }
-        return back()->with('success', 'Excel Data Imported successfully.');
-    }
-
+        
     public static function delete_subject(Request $request)
     {
 
