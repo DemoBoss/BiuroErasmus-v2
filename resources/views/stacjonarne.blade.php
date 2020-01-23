@@ -76,7 +76,15 @@
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <tr>
-                                    <th>Usuń przedmiot</th>
+
+                                    @guest
+                                    @else
+                                        @if(Auth::user()->role_name == "Admin")
+
+                                            <th>Usuń przedmiot</th>
+                                        @endif
+                                    @endguest
+
                                     <th>Nazwa pliku siatki</th>
                                     <th>Przedmioty</th>
                                     <th>Forma zaliczenia</th>
@@ -122,12 +130,20 @@
                                     @foreach($subjectsInz as $row)
 
                                         <tr class="rzad">
+                                            @guest
+                                                @else
+                                                @if(Auth::user()->role_name == "Admin")
+
+
+
                                             <td>
                                                 <form action="/delete_subject">
                                                     <input type="hidden" name="subject_id" value="{{$row->id}}">
                                                     <button type="submit" class=" btn btn-danger" style="margin-top: 10px">Usuń</button>
                                                 </form>
                                             </td>
+                                                    @endif
+                                                @endguest
                                             <td>{{ $row->Nazwa_pliku }}</td>
                                             <td>{{ $row->Przedmioty }}</td>
                                             <td>{{ $row->Forma_zaliczenia }}</td>
@@ -229,7 +245,13 @@
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <tr>
-                                    <th>Usuń przedmiot</th>
+                                    @guest
+                                    @else
+                                        @if(Auth::user()->role_name == "Admin")
+
+                                            <th>Usuń przedmiot</th>
+                                        @endif
+                                    @endguest
                                     <th>Przedmioty</th>
                                     <th>Forma zaliczenia</th>
                                     <th>Wykład</th>
@@ -252,12 +274,17 @@
                                     @foreach($subjectsMgr as $row)
 
                                         <tr class="rzad">
-                                            <td>
-                                                <form action="/delete_subject">
-                                                    <input type="hidden" name="subject_id" value="{{$row->id}}">
-                                                    <button type="submit" class=" btn btn-danger" style="margin-top: 10px">Usuń</button>
-                                                </form>
-                                            </td>
+                                            @guest
+                                            @else
+                                                @if(Auth::user()->role_name == "Admin")
+                                                    <td>
+                                                        <form action="/delete_subject">
+                                                            <input type="hidden" name="subject_id" value="{{$row->id}}">
+                                                            <button type="submit" class=" btn btn-danger" style="margin-top: 10px">Usuń</button>
+                                                        </form>
+                                                    </td>
+                                                @endif
+                                            @endguest
                                             <td>{{ $row->Przedmioty }}</td>
                                             <td>{{ $row->Forma_zaliczenia }}</td>
                                             <td>{{ $row->Wykład1 }}</td>
