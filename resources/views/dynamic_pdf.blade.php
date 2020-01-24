@@ -37,7 +37,13 @@
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
-                <th>Usuń przedmiot</th>
+                @guest
+                @else
+                    @if(Auth::user()->role_name == "Admin")
+
+                        <th>Usuń przedmiot</th>
+                    @endif
+                @endguest
                 <th>Przedmioty</th>
                 <th>Forma zaliczenia</th>
                 <th>Wykład</th>

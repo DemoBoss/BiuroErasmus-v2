@@ -482,7 +482,7 @@ class SiatkiController extends Controller
             }
             return back()->with('success', 'Excel Data Imported successfully.');
         }
-        
+
     public static function delete_subject(Request $request)
     {
 

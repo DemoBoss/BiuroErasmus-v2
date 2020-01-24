@@ -102,9 +102,10 @@
                     </div>
                 </div>
             </div>
+            <div><a style="font-size: 30px" href="{{ url('/dynamic_pdf') }}">PDF z wybranymi przedmiotami</a></div>
             @endif
 
         </div>
-        <div><a style="font-size: 30px" href="{{ url('/dynamic_pdf') }}">PDF z wybranymi przedmiotami</a></div>
+
     </div>
 @endsection
